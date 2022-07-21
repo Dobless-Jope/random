@@ -87,6 +87,8 @@ def maindatabase():
     ff1.place(x=0,y=530,width=1530,height=70)
     df1=Frame(screen5,bd=20,relief=RIDGE)
     df1.place(x=0,y=600,width=1530,height=190)
+    l1=Label(lf1,text='Name of the user',font=("times new roman",12,"bold"),padx=2,pady=6)
+    l1.grid(row=0,colum=0)
 
 
 def d1():
