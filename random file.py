@@ -73,24 +73,75 @@ def register():
 def maindatabase():
     screen5=Toplevel(screen)
     screen5.title('Event database')
-    screen5.geometry("1540x800+0+0")
-    Label(screen5,bd=20,relief=RIDGE,text="EVENT MANAGEMENT DATABASE",bg="white",font=("times new roman",50,"bold")).pack(side=TOP,fill=X)
+    screen5.geometry("900x700+0+0")
+    screen5.title('Event database')
+    Label(screen5,bd=20,relief=RIDGE,text="EVENT DATABASE",bg="white",font=("times new roman",50,"bold")).pack(side=TOP,fill=X)
+
     f1=Frame(screen5,bd=20,relief=RIDGE)
-    f1.place(x=0,y=130,width=1530,height=400)
-    lf1=LabelFrame(f1,bd=10,relief=RIDGE,padx=10,
-                                              font=("times new roman",12,"bold"),text="Information about the event")
-    lf1.place(x=0,y=5,width=980,height=350)
-    lf2=LabelFrame(f1,bd=10,relief=RIDGE,padx=10,
-                                              font=("times new roman",12,"bold"),text="Details overview")
-    lf2.place(x=990,y=5,width=460,height=350)
-    ff1=Frame(screen5,bd=20,relief=RIDGE)
-    ff1.place(x=0,y=530,width=1530,height=70)
-    df1=Frame(screen5,bd=20,relief=RIDGE)
-    df1.place(x=0,y=600,width=1530,height=190)
-    l1=Label(lf1,text='Name of the user',font=("times new roman",12,"bold"),padx=2,pady=6)
-    l1.grid(row=0,colum=0)
+    f1.place(x=0,y=130,width=900,height=300)
 
+    lf=LabelFrame(f1,bd=10,relief=RIDGE,text='Event details',padx=10,font=("times new roman",12,"bold"))
+    lf.place(x=0,y=5,width=500,height=250)
 
+    lf1=Label(lf,text='Full name of the user',font=("times new roman",12,"bold"),padx=2,pady=6)
+    lf1.grid(row=0,column=0)
+
+    lf1_entry=Entry(lf,font=("times new roman",12,"bold"),width=35)
+    lf1_entry.grid(row=0,column=1)
+
+    lf2=Label(lf,text='Event to be planned',font=("times new roman",12,"bold"),padx=2,pady=6)
+    lf2.grid(row=1,column=0)
+
+    lf2_entry=ttk.Combobox(lf,font=("times new roman",12,"bold"),width=33)
+    lf2_entry["values"]=("Birthday",'Marriage','Corporate Meeting','Informal Get together','Conference','Seminar','Award shows and competition','Charity event',)
+    lf2_entry.grid(row=1,column=1)
+
+    lf3=Label(lf,text='Budget for the event',font=("times new roman",12,"bold"),padx=2,pady=6)
+    lf3.grid(row=2,column=0)
+
+    lf3_entry=Entry(lf,font=("times new roman",12,"bold"),width=35)
+    lf3_entry.grid(row=2,column=1)
+
+    lf4=Label(lf,text='Event manager',font=("times new roman",12,"bold"),padx=2,pady=6)
+    lf4.grid(row=3,column=0)
+
+    lf4_entry=ttk.Combobox(lf,font=("times new roman",12,"bold"),width=33)
+    lf4_entry["values"]=("Spartacus Edmundo","Maram Balder","Husam Mirosław")
+    lf4_entry.grid(row=3,column=1)
+
+    lf5=Label(lf,text='Date of the event',font=("times new roman",12,"bold"),padx=2,pady=6)
+    lf5.grid(row=4,column=0)
+
+    lf5_entry=Entry(lf,font=("times new roman",12,"bold"),width=35)
+    lf5_entry.grid(row=4,column=1)
+
+    rf=LabelFrame(f1,bd=10,relief=RIDGE,text='Details overview',padx=10,font=("times new roman",12,"bold"))
+    rf.place(x=510,y=5,width=350,height=250)
+
+    rt1=Text(rf,font=("times new roman",12,"bold"),width=38,height=10,padx=2,pady=6)
+    rt1.grid(row=0,column=0)
+
+    f2=Frame(screen5,bd=20,relief=RIDGE)
+    f2.place(x=0,y=435,width=900,height=100)
+
+    f2_button1=Button(f2,text="Enter the data",font=("times new roman",12,"bold"),width=18,height=2,padx=2,pady=6)
+    f2_button1.grid(row=0,column=0)
+
+    f2_button2=f2_button1=Button(f2,text="Delete data",font=("times new roman",12,"bold"),width=18,height=2,padx=2,pady=6)
+    f2_button2.grid(row=0,column=1)
+
+    f2_button3=f2_button1=Button(f2,text="Data overview",font=("times new roman",12,"bold"),width=18,height=2,padx=2,pady=6)
+    f2_button3.grid(row=0,column=2)
+
+    f2_button4=Button(f2,text="Clear every data",font=("times new roman",12,"bold"),width=18,height=2,padx=2,pady=6)
+    f2_button4.grid(row=0,column=3)
+
+    f2_button5=Button(f2,text="Exit",font=("times new roman",12,"bold"),command=exit,width=17,height=2,padx=2,pady=6)
+    f2_button5.grid(row=0,column=4)
+
+    f3=Frame(screen5,bd=20,relief=RIDGE)
+    f3.place(x=0,y=540,width=900,height=160)
+    
 def d1():
     screen4.destroy()
 def userinfo():
@@ -132,7 +183,9 @@ def gologin():
                 Label(screen3,text="").pack()
                 Button(screen3,text="Event database",width="15",height="1",command=maindatabase).pack() 
                 Label(screen3,text="").pack()
-                Button(screen3,text="Contact an event manager",height="1").pack() 
+                Button(screen3,text="Contact an event manager",height="1").pack()
+                Label(screen3,text="").pack()
+                Button(screen3,text="Issue a complaint",height="1").pack() 
                 return
             else:
                 login_notif.config(text="Password entered in incorrect",fg='red')
